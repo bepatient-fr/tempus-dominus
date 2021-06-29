@@ -606,7 +606,7 @@
                     yearsViewHeader.eq(0).addClass('disabled');
                 }
 
-                yearsViewHeader.eq(1).text(startYear.year() + '-' + endYear.year());
+                yearsViewHeader.eq(1).text(startYear.format("y") + '-' + endYear.format("y"));
 
                 if (options.maxDate && options.maxDate.isBefore(endYear, 'y')) {
                     yearsViewHeader.eq(2).addClass('disabled');
@@ -640,7 +640,7 @@
                     decadesViewHeader.eq(0).addClass('disabled');
                 }
 
-                decadesViewHeader.eq(1).text(startDecade.year() + '-' + endDecade.year());
+                decadesViewHeader.eq(1).text(startDecade.format("y") + '-' + endDecade.format("y"));
 
                 if (startDecade.isSame(moment({ y: 2000 })) || (options.maxDate && options.maxDate.isBefore(endDecade, 'y'))) {
                     decadesViewHeader.eq(2).addClass('disabled');
@@ -651,13 +651,13 @@
                     minDateDecade = options.minDate && options.minDate.isAfter(startDecade, 'y') && options.minDate.year() <= endDecadeYear;
                     maxDateDecade = options.maxDate && options.maxDate.isAfter(startDecade, 'y') && options.maxDate.year() <= endDecadeYear;
                     html += '<span data-action="selectDecade" class="decade' + (date.isAfter(startDecade) && date.year() <= endDecadeYear ? ' active' : '') +
-                        (!isValid(startDecade, 'y') && !minDateDecade && !maxDateDecade ? ' disabled' : '') + '" data-selection="' + (startDecade.year() + 6) + '">' + (startDecade.year() + 1) + ' - ' + (startDecade.year() + 12) + '</span>';
+                        (!isValid(startDecade, 'y') && !minDateDecade && !maxDateDecade ? ' disabled' : '') + '" data-selection="' + (startDecade.year() + 6) + '">' + (startDecade.clone().add(1, "y").format("y")) + ' - ' + (startDecade.clone().add(12, "y").format("y")) + '</span>';
                     startDecade.add(12, 'y');
                 }
                 html += '<span></span><span></span><span></span>'; //push the dangling block over, at least this way it's even
 
                 decadesView.find('td').html(html);
-                decadesViewHeader.eq(1).text((startedAt.year() + 1) + '-' + (startDecade.year()));
+                decadesViewHeader.eq(1).text((startedAt.format("y") + 1) + '-' + (startDecade.format("y")));
             },
 
             fillDate = function () {
