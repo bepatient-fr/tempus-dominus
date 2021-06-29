@@ -657,7 +657,7 @@
                 html += '<span></span><span></span><span></span>'; //push the dangling block over, at least this way it's even
 
                 decadesView.find('td').html(html);
-                decadesViewHeader.eq(1).text((startedAt.format("y") + 1) + '-' + (startDecade.format("y")));
+                decadesViewHeader.eq(1).text((startedAt.clone().add(1, 'y').format("y")) + '-' + (startDecade.format("y")));
             },
 
             fillDate = function () {
