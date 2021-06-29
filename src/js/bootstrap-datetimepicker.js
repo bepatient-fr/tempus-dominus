@@ -722,7 +722,7 @@
                         classNames: clsNames
                     });
                     console.log(currentDate);
-                    console.log(currentDate.format("D");
+                    console.log(currentDate.format("D"));
                     row.append('<td data-action="selectDay" data-day="' + currentDate.toISOString() + '" class="' + clsNames.join(' ') + '">' + currentDate.format("D") + '</td>');
                     currentDate.add(1, 'd');
                 }
