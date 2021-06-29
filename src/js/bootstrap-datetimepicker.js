@@ -624,6 +624,7 @@
                 var decadesView = widget.find('.datepicker-decades'),
                     decadesViewHeader = decadesView.find('th'),
                     startDecade = moment({ y: viewDate.year() - (viewDate.year() % 100) - 1 }),
+                    startDecade = startDecade.locale(viewDate.locale())
                     endDecade = startDecade.clone().add(100, 'y'),
                     startedAt = startDecade.clone(),
                     minDateDecade = false,
