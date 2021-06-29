@@ -721,7 +721,7 @@
                         date: currentDate,
                         classNames: clsNames
                     });
-                    row.append('<td data-action="selectDay" data-day="' + currentDate.format('L') + '" class="' + clsNames.join(' ') + '">' + currentDate.date() + '</td>');
+                    row.append('<td data-action="selectDay" data-day="' + currentDate.format('L') + '" class="' + clsNames.join(' ') + '">' + currentDate.format("d") + '</td>');
                     currentDate.add(1, 'd');
                 }
 
