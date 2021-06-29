@@ -721,7 +721,7 @@
                         date: currentDate,
                         classNames: clsNames
                     });
-                    row.append('<td data-action="selectDay" data-day="' + currentDate.toISOString() + '" class="' + clsNames.join(' ') + '">' + currentDate.format("D") + '</td>');
+                    row.append('<td data-action="selectDay" data-day="' + currentDate.date() + '" class="' + clsNames.join(' ') + '">' + currentDate.format("D") + '</td>');
                     currentDate.add(1, 'd');
                 }
 
@@ -1020,7 +1020,7 @@
                     if ($(e.target).is('.new')) {
                         day.add(1, 'M');
                     }
-                    setValue(day.date(parseInt($(e.target).text(), 10)));
+                    setValue(day.date(parseInt($(e.target).attr("data-day"), 10)));
                     if (!hasTime() && !options.keepOpen && !options.inline) {
                         hide();
                     }
