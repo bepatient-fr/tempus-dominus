@@ -571,7 +571,7 @@
                     monthsViewHeader.eq(0).addClass('disabled');
                 }
 
-                monthsViewHeader.eq(1).text(viewDate.year());
+                monthsViewHeader.eq(1).text(viewDate.format("y"));
 
                 if (!isValid(viewDate.clone().add(1, 'y'), 'y')) {
                     monthsViewHeader.eq(2).addClass('disabled');
@@ -613,7 +613,7 @@
                 }
 
                 while (!startYear.isAfter(endYear, 'y')) {
-                    html += '<span data-action="selectYear" class="year' + (startYear.isSame(date, 'y') && !unset ? ' active' : '') + (!isValid(startYear, 'y') ? ' disabled' : '') + '">' + startYear.format('y') + '</span>';
+                    html += '<span data-action="selectYear" data-year="' + startYear.year() + '"' + ' class="year' + (startYear.isSame(date, 'y') && !unset ? ' active' : '') + (!isValid(startYear, 'y') ? ' disabled' : '') + '">' + startYear.format('y') + '</span>';
                     startYear.add(1, 'y');
                 }
 
@@ -983,7 +983,7 @@
                 },
 
                 selectYear: function (e) {
-                    var year = parseInt($(e.target).text(), 10) || 0;
+                    var year = parseInt($(e.target).attr("data-year"), 10) || 0;
                     viewDate.year(year);
                     if (currentViewMode === minViewModeNumber) {
                         setValue(date.clone().year(viewDate.year()));
