@@ -689,6 +689,9 @@
                 }
 
                 currentDate = viewDate.clone().startOf('M').startOf('w').startOf('d');
+                console.log("BEGIN");
+                console.log(currentDate);
+                console.log("END");
 
                 for (i = 0; i < 42; i++) { //always display 42 days (should show 6 weeks)
                     if (currentDate.weekday() === 0) {
@@ -722,6 +725,9 @@
                         date: currentDate,
                         classNames: clsNames
                     });
+                    console.log(currentDate);
+                    console.log(currentDate.date());
+                    console.log(currentDate.format("D"));
                     row.append('<td data-action="selectDay" data-day="' + currentDate.date() + '" class="' + clsNames.join(' ') + '">' + currentDate.format("D") + '</td>');
                     currentDate.add(1, 'd');
                 }
